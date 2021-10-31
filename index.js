@@ -36,13 +36,7 @@ async function run() {
         })
 
 
-        // create a document to insert
-        const doc = {
-            title: "Record of a Shriveled Datum",
-            content: "No bytes, no problem. Just insert a document, in MongoDB",
-        }
-        const result = await offerCollection.insertOne(doc);
-        console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
 
 
     }
