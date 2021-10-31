@@ -24,7 +24,18 @@ async function run() {
     try {
         await client.connect();
         const database = client.db("Travel");
-        const offerCollection = database.collection("actvities");
+        const offerCollection = database.collection("offers");
+
+
+        //GET API - 
+
+        app.get('/offers', async (req, res) => {
+            const cursor = offerCollection.find({});
+            const offers = await cursor.toArray();
+            res.send(offers);
+        })
+
+
         // create a document to insert
         const doc = {
             title: "Record of a Shriveled Datum",
@@ -32,6 +43,8 @@ async function run() {
         }
         const result = await offerCollection.insertOne(doc);
         console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
+
     }
     finally {
         //   await client.close();
