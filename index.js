@@ -36,6 +36,19 @@ async function run() {
         })
 
 
+        //POST API -insert one offer
+
+        app.post("/offers", (req, res) => {
+
+            const newOffer = req.body;
+            newOffer.id = users.length;
+            offers.push(newOffer);
+
+
+            console.log('hit user', req.body);
+
+            res.send(JSON.stringify(newOffer));
+        })
 
 
 
